@@ -1,0 +1,55 @@
+.screen {
+}
+.screen-border {
+  padding: 1rem;
+  padding-block-end: 2.75rem;
+  border-radius: 0.5rem;
+  background-color: var(--white);
+  position: relative;
+  /* box-sizing: border-box; */
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 2rem 100%, 0 calc(100% - 2.65rem));
+}
+
+.screen-safeArea {
+  padding: 1rem;
+  background-color: #8db9dc;
+  border-radius: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  block-size: 10rem;
+  box-sizing: border-box;
+  background-size: cover;
+  background-position: center;
+}
+
+.button-screen {
+  display: flex;
+  gap: 1rem;
+}
+.screen-border::after {
+  position: absolute;
+  content: "";
+  inline-size: 1rem;
+  block-size: 1rem;
+  border-radius: 50%;
+  background-color: var(--primary);
+  inset-inline-start: 128px;
+  inset-block-end: 1rem;
+}
+.screen-border::before {
+  position: absolute;
+  content: "";
+  inline-size: 1rem;
+  block-size: 1rem;
+  border-radius: 50%;
+  background-color: var(--primary);
+  inset-inline-end: 160px;
+  inset-block-end: 1rem;
+}
+
+.burger-button {
+  position: absolute;
+  inset-inline-end: 1rem;
+  inset-block-end: 1rem;
+}
