@@ -1,6 +1,6 @@
 // import { getPokemon } from "./api.js";
 import "./charts.js";
-import { setPokemon, setImage } from "./pokemon.js";
+import { setPokemon, setImage } from "./pokedex.js";
 
 const $form = document.querySelector("#form");
 const $next = document.querySelector("#next-pokemon");
