@@ -1,3 +1,4 @@
+// import { getPokemon } from "./api.js";
 import "./charts.js";
 import { setPokemon, setImage } from "./pokemon.js";
 
@@ -7,7 +8,7 @@ const $nextImage = document.querySelector("#next-image");
 const $prevImage = document.querySelector("#prev-image");
 const $prev = document.querySelector("#prev-pokemon");
 const $pokedex = document.querySelector("#pokedex");
-
+const $randomPokemon = document.querySelector("#random-buttom");
 // $form.addEventListener("submit", async (event) => {
 //   event.preventDefault();
 //   const form = new FormData($form);
@@ -27,6 +28,7 @@ $next.addEventListener("click", handleNextPokemon);
 $prev.addEventListener("click", handlePrevPokemon);
 $nextImage.addEventListener("click", handleNextImage);
 $prevImage.addEventListener("click", handlePrevImage);
+$randomPokemon.addEventListener("click", handleRamdonPokemon);
 // $pokedex.addEventListener("click", handlePrevPokemon);
 
 let activePokemon = null;
@@ -76,4 +78,14 @@ function handlePrevImage() {
   }
   activeSprite = activeSprite - 1;
   return setImage(activePokemon.sprites[activeSprite]);
+}
+// generar un pokemon al azar
+
+async function handleRamdonPokemon() {
+  const id = generateRandomPokemon();
+  activePokemon = await setPokemon(id);
+}
+
+function generateRandomPokemon() {
+  return Math.floor(Math.random() * (893 - 1) + 1);
 }

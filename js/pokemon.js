@@ -14,6 +14,10 @@ function loader(isLoading = false) {
   const img = isLoading ? "url(./image/loading.gif)" : "";
   $screen.style.backgroundImage = img;
 }
+const $formName = document.querySelector("#formName");
+function getName(name) {
+  $formName.value = name;
+}
 
 const $light = document.querySelector("#light");
 function speech(text) {
@@ -29,12 +33,11 @@ function speech(text) {
 
 export async function findPokemon(id) {
   const pokemon = await getPokemon(id);
-  debugger;
   const species = await getSpecies(id);
-
   const description = species.flavor_text_entries.find(
     (flavor) => flavor.language.name === "es"
   );
+
   const sprites = [pokemon.sprites.front_default];
   const stats = pokemon.stats.map((item) => item.base_stat);
   for (const item in pokemon.sprites) {
@@ -65,10 +68,12 @@ export async function setPokemon(id) {
 
   setImage(pokemon.sprites[0]);
   setDescription(pokemon.description);
+  getName(pokemon.name);
   speech(`${pokemon.name}.${pokemon.description}`);
   if (activeChart instanceof Chart) {
     activeChart.destroy();
   }
   activeChart = createChart(pokemon.stats);
+
   return pokemon;
 }
